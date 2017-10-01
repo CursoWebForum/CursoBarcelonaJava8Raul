@@ -10,6 +10,7 @@ public class Game {
         List<Resizable> resizableShapes =
                 Arrays.asList(new Square(),
                         new Triangle(), new Ellipse());
+        //Llama al metodo paint de la clase Utils que hemos definido
         Utils.paint(resizableShapes);
     }
 }

@@ -14,8 +14,7 @@ public class Diamond{
 
     static interface B extends A { }
 
-    static interface C extends A {
-    }
+    static interface C extends A {}
 
     static class D implements B, C {
 

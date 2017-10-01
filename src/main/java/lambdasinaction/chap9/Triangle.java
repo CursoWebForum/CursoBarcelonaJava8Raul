@@ -1,8 +1,6 @@
 package lambdasinaction.chap9;
 
-/**
- * Created by raoul-gabrielurma on 15/01/2014.
- */
+//clases que implementa nuestra interfaz
 public class Triangle implements Resizable {
     @Override
     public int getWidth() {

@@ -3,6 +3,11 @@ import lambdasinaction.chap4.*;
 
 import java.util.stream.*;
 import java.util.*;
+//Temas tratados. Estudio de los metodos del Api Stream: anyMatch, allMatch, 
+//noneMacht y findAny()
+//Clase Optional -> Representa la ausencia o presencia de un valor. Chap 10 +
+//Principles metodo en pagina 131 Java in action. 
+//Escribir completa
 
 import static lambdasinaction.chap4.Dish.menu;
 
@@ -19,7 +24,7 @@ public class Finding{
         Optional<Dish> dish = findVegetarianDish();
         dish.ifPresent(d -> System.out.println(d.getName()));
     }
-    
+    //anyMatch devuelve verdadero si todos los elementos cumplen la condicion
     private static boolean isVegetarianFriendlyMenu(){
         return menu.stream().anyMatch(Dish::isVegetarian);
     }

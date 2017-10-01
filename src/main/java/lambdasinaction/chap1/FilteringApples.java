@@ -2,40 +2,45 @@ package lambdasinaction.chap1;
 
 import java.util.*;
 import java.util.function.Predicate;
+//Aspectos, tocados en este código. 
+//-Predicados-> - Expresiones Lambda ->  - Referencias a metodos
+//Es importante destacar que si las lambdas necesitan mucho código es mejor
+//usar referencias a metodos....es mejor CLARIDAD DE CODIGO. 
 
-public class FilteringApples{
+public class FilteringApples {
 
-    public static void main(String ... args){
+    public static void main(String... args) {
 
-        List<Apple> inventory = Arrays.asList(new Apple(80,"green"),
-                                              new Apple(155, "green"),
-                                              new Apple(120, "red"));	
+        List<Apple> inventory = Arrays.asList(new Apple(80, "green"),
+                new Apple(155, "green"),
+                new Apple(120, "red"));
 
-        // [Apple{color='green', weight=80}, Apple{color='green', weight=155}]
+//filterApples-> referencia a los demas, es el metodo que contiene el predicado
+//Tambien introducimos el concepto de referencia a metodos...ESCRIBIR...........
         List<Apple> greenApples = filterApples(inventory, FilteringApples::isGreenApple);
         System.out.println(greenApples);
-        
-        // [Apple{color='green', weight=155}]
+
         List<Apple> heavyApples = filterApples(inventory, FilteringApples::isHeavyApple);
         System.out.println(heavyApples);
-        
-        // [Apple{color='green', weight=80}, Apple{color='green', weight=155}]
+
+//Con expresiones Lambda mejoramos la referencia a metodos------ESCRIBIR--------
+
         List<Apple> greenApples2 = filterApples(inventory, (Apple a) -> "green".equals(a.getColor()));
         System.out.println(greenApples2);
-        
-        // [Apple{color='green', weight=155}]
+
+
         List<Apple> heavyApples2 = filterApples(inventory, (Apple a) -> a.getWeight() > 150);
         System.out.println(heavyApples2);
-        
-        // []
-        List<Apple> weirdApples = filterApples(inventory, (Apple a) -> a.getWeight() < 80 || 
-                                                                       "brown".equals(a.getColor()));
-        System.out.println(weirdApples);
-    }
 
-    public static List<Apple> filterGreenApples(List<Apple> inventory){
+        List<Apple> weirdApples = filterApples(inventory, (Apple a) -> a.getWeight() < 80
+                || "brown".equals(a.getColor()));
+        System.out.println(weirdApples);
+    }// Fin metodo main()
+
+    //Metodos que necesitariamos para hacer distintos filtros Java 7------------
+    public static List<Apple> filterGreenApples(List<Apple> inventory) {
         List<Apple> result = new ArrayList<>();
-        for (Apple apple: inventory){
+        for (Apple apple : inventory) {
             if ("green".equals(apple.getColor())) {
                 result.add(apple);
             }
@@ -43,9 +48,10 @@ public class FilteringApples{
         return result;
     }
 
-    public static List<Apple> filterHeavyApples(List<Apple> inventory){
+    //Metodos que necesitariamos para hacer distintos filtros Java 7------------
+    public static List<Apple> filterHeavyApples(List<Apple> inventory) {
         List<Apple> result = new ArrayList<>();
-        for (Apple apple: inventory){
+        for (Apple apple : inventory) {
             if (apple.getWeight() > 150) {
                 result.add(apple);
             }
@@ -53,29 +59,36 @@ public class FilteringApples{
         return result;
     }
 
+    //Metodos que necesitariamos para hacer distintos filtros para Java 8 ------
     public static boolean isGreenApple(Apple apple) {
-        return "green".equals(apple.getColor()); 
+        return "green".equals(apple.getColor());
     }
 
+    //Metodos que necesitariamos para hacer distintos filtros para Java 8-------
     public static boolean isHeavyApple(Apple apple) {
         return apple.getWeight() > 150;
     }
 
-    public static List<Apple> filterApples(List<Apple> inventory, Predicate<Apple> p){
+//Java. 8.PREDICADOS: Un predicado es una funcion que devuelve verdadero o false
+//Este metodo Introduce las manzanas en la lista.....y devuelve true o false
+    //escribir
+    public static List<Apple> filterApples(List<Apple> inventory, Predicate<Apple> p) {
         List<Apple> result = new ArrayList<>();
-        for(Apple apple : inventory){
-            if(p.test(apple)){
+        for (Apple apple : inventory) {
+            //test evalua el predicado
+            if (p.test(apple)) {
                 result.add(apple);
             }
         }
         return result;
-    }       
+    }
 
     public static class Apple {
+
         private int weight = 0;
         private String color = "";
 
-        public Apple(int weight, String color){
+        public Apple(int weight, String color) {
             this.weight = weight;
             this.color = color;
         }
@@ -97,11 +110,9 @@ public class FilteringApples{
         }
 
         public String toString() {
-            return "Apple{" +
-                   "color='" + color + '\'' +
-                   ", weight=" + weight +
-                   '}';
+            return "Apple{" + "color='" + color + '\'' + ", weight=" + weight + '}';
         }
     }
-
+    
+    
 }

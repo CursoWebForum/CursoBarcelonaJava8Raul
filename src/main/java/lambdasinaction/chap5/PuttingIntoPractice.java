@@ -7,6 +7,20 @@ import java.util.*;
 import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.toList;
 
+/*
+ 
+Responder a estas preguntas: 
+1. Encuentre todas las transacciones en el año 2011 y clasifíquelas por valor 
+(de menor a mayor).
+2. ¿Cuáles son todas las ciudades únicas donde trabajan los comerciantes?
+3. Encuentre a todos los comerciantes de Cambridge y clasifíquelos por nombre.
+4. Devuelva una cadena de nombres de todos los operadores ordenados alfabéticamente.
+5. ¿Hay comerciantes en Milán?
+6. Imprima todos los valores de las transacciones de los comerciantes que viven en Cambridge.
+7. ¿Cuál es el valor más alto de todas las transacciones?
+8. Encuentre la transacción con el valor más pequeño.
+*/
+
 public class PuttingIntoPractice{
     public static void main(String ...args){    
         Trader raoul = new Trader("Raoul", "Cambridge");
@@ -24,14 +38,14 @@ public class PuttingIntoPractice{
         );	
         
         
-        // Query 1: Find all transactions from year 2011 and sort them by value (small to high).
+        // Pregunta 1: Encuentre todas las transacciones del año 2011 y ordénelas por valor (menor a mayor).
         List<Transaction> tr2011 = transactions.stream()
                                                .filter(transaction -> transaction.getYear() == 2011)
                                                .sorted(comparing(Transaction::getValue))
                                                .collect(toList());
         System.out.println(tr2011);
         
-        // Query 2: What are all the unique cities where the traders work?
+        // Pregunta 2: ¿Cuáles son todas las ciudades únicas donde trabajan los comerciantes?
         List<String> cities = 
             transactions.stream()
                         .map(transaction -> transaction.getTrader().getCity())
@@ -39,7 +53,7 @@ public class PuttingIntoPractice{
                         .collect(toList());
         System.out.println(cities);
 
-        // Query 3: Find all traders from Cambridge and sort them by name.
+        // Pregunta 3: Encuentre a todos los comerciantes de Cambridge y ordénelos por nombre.
         
         List<Trader> traders = 
             transactions.stream()
@@ -51,7 +65,7 @@ public class PuttingIntoPractice{
         System.out.println(traders);
         
         
-        // Query 4: Return a string of all traders’ names sorted alphabetically.
+        // Pregunta 4: Devuelve una cadena de nombres de todos los operadores ordenados alfabéticamente.
         
         String traderStr = 
             transactions.stream()
@@ -61,7 +75,7 @@ public class PuttingIntoPractice{
                         .reduce("", (n1, n2) -> n1 + n2);
         System.out.println(traderStr);
         
-        // Query 5: Are there any trader based in Milan?
+        // Pregunta 5: ¿Hay algún comerciante con sede en Milán?
         
         boolean milanBased =
             transactions.stream()
@@ -72,7 +86,7 @@ public class PuttingIntoPractice{
         System.out.println(milanBased);
         
         
-        // Query 6: Update all transactions so that the traders from Milan are set to Cambridge.
+        // Pregunta 6: Actualizar todas las transacciones para que los operadores de Milán estén en Cambridge.
         transactions.stream()
                     .map(Transaction::getTrader)
                     .filter(trader -> trader.getCity().equals("Milan"))
@@ -80,7 +94,7 @@ public class PuttingIntoPractice{
         System.out.println(transactions);
         
         
-        // Query 7: What's the highest value in all the transactions?
+        // pregunta 7:¿Busca el valor más alto en todas las transacciones? 7: 
         int highestValue = 
             transactions.stream()
                         .map(Transaction::getValue)

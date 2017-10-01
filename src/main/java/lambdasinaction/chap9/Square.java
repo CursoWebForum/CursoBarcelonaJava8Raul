@@ -1,8 +1,6 @@
 package lambdasinaction.chap9;
 
-/**
- * Created by raoul-gabrielurma on 15/01/2014.
- */
+//clase que imlementa nuestra interfaz
 public class Square implements Resizable {
     @Override
     public int getWidth() {

@@ -10,15 +10,16 @@ public class BuildingStreams {
 
     public static void main(String...args) throws Exception{
         
-        // Stream.of
+        // Stream.of () -> este metodo permite crear streams de diversos
+        //tipos y acepta multiples parametros
         Stream<String> stream = Stream.of("Java 8", "Lambdas", "In", "Action");
         stream.map(String::toUpperCase).forEach(System.out::println);
 
-        // Stream.empty
+        // Stream.empty()-> Crea un Stream vacio
         Stream<String> emptyStream = Stream.empty();
 
-        // Arrays.stream
-        int[] numbers = {2, 3, 5, 7, 11, 13};
+        // Arrays.stream crea un Stream de valores númericos
+        int[] numbers = {2, 3, 5 , 7, 11, 13};
         System.out.println(Arrays.stream(numbers).sum());
 
         // Stream.iterate

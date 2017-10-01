@@ -1,8 +1,5 @@
 package lambdasinaction.chap9;
-
-/**
- * Created by raoul-gabrielurma on 15/01/2014.
- */
+//La clase Ellipse implementa nuestra interfaz Resizable
 public class Ellipse implements Resizable {
     @Override
     public int getWidth() {

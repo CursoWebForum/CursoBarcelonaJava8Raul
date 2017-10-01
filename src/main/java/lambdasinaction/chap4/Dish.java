@@ -7,6 +7,8 @@ public class Dish {
     private final boolean vegetarian;
     private final int calories;
     private final Type type;
+    
+
 
     public Dish(String name, boolean vegetarian, int calories, Type type) {
         this.name = name;
@@ -14,6 +16,13 @@ public class Dish {
         this.calories = calories;
         this.type = type;
     }
+
+    public Dish() {
+        throw new UnsupportedOperationException("Not supported yet."); 
+      //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
 
     public String getName() {
         return name;

@@ -8,15 +8,17 @@ import static java.util.stream.Collectors.toList;
 
 import static lambdasinaction.chap4.Dish.menu;
 
+//Temas tocados. Operaciones con Streams
+
 public class StreamBasic {
 
     public static void main(String...args){
-        // Java 7
+        // Metodo escrito con Java 7
         getLowCaloricDishesNamesInJava7(Dish.menu).forEach(System.out::println);
 
         System.out.println("---");
 
-        // Java 8
+        // Java 8....escribir.......................
         getLowCaloricDishesNamesInJava8(Dish.menu).forEach(System.out::println);
 
     }
@@ -38,8 +40,8 @@ public class StreamBasic {
             lowCaloricDishesName.add(d.getName());
         }
         return lowCaloricDishesName;
-    }
-
+    } 
+//Metodo en Java 8 que utiliza un pipeline de acciones---escribir--------------
     public static List<String> getLowCaloricDishesNamesInJava8(List<Dish> dishes){
         return dishes.stream()
                 .filter(d -> d.getCalories() < 400)

@@ -15,5 +15,9 @@ public class Peek {
                 .peek(x -> System.out.println("after map: " + x)).filter(x -> x % 2 == 0)
                 .peek(x -> System.out.println("after filter: " + x)).limit(3)
                 .peek(x -> System.out.println("after limit: " + x)).collect(toList());
+       
+        System.out.println("---arreglo resultante");
+                
+        result.forEach(System.out::println);
     }
 }
